@@ -20,10 +20,10 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <Button variant="brand" className="h-12 px-6 font-semibold hover:opacity-90 hover:shadow-md transition-all">
+              <Button variant="brand" className="h-12 px-8 font-semibold w-full sm:w-auto">
                 Get Started
               </Button>
-              <Button variant="outline" className="h-12 px-6 font-semibold hover:bg-gray-50 hover:shadow-md transition-all">
+              <Button variant="outline" className="h-12 px-8 font-semibold w-full sm:w-auto">
                 Explore Skills
               </Button>
             </div>
@@ -31,12 +31,11 @@ const Hero = () => {
 
           {/* Visual Element */}
           <div className="relative">
-            <Card className="border-0 shadow-xl bg-linear-to-br from-white to-gray-50">
-              <div className="p-8">
-                <div className="space-y-4">
+            <Card className="border-0 shadow-xl bg-linear-to-br from-white to-gray-50 [&>div]:p-6 sm:[&>div]:p-8">
+              <div className="space-y-4">
                   <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                      <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center shrink-0">
+                      <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
                       </svg>
@@ -71,22 +70,21 @@ const Hero = () => {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-4 pt-4 border-t border-gray-100 mt-6">
-                    <div className="text-center">
-                      <p className="text-3xl font-black text-orange-600 tabular-nums">500+</p>
-                      <p className="text-xs font-medium text-gray-500 uppercase tracking-wide mt-1">Courses</p>
+                  <div className="grid grid-cols-1 min-[380px]:grid-cols-3 gap-3 sm:gap-4 pt-4 border-t border-gray-100 mt-6">
+                    <div className="text-center min-w-0 px-1">
+                      <p className="text-2xl min-[380px]:text-3xl font-black text-orange-600 tabular-nums">500+</p>
+                      <p className="text-[0.65rem] min-[380px]:text-xs font-medium text-gray-500 uppercase tracking-wide mt-1">Courses</p>
                     </div>
-                    <div className="text-center">
-                      <p className="text-3xl font-black text-orange-600 tabular-nums">1.2K+</p>
-                      <p className="text-xs font-medium text-gray-500 uppercase tracking-wide mt-1">Mentors</p>
+                    <div className="text-center min-w-0 px-1">
+                      <p className="text-2xl min-[380px]:text-3xl font-black text-orange-600 tabular-nums">1.2K+</p>
+                      <p className="text-[0.65rem] min-[380px]:text-xs font-medium text-gray-500 uppercase tracking-wide mt-1">Mentors</p>
                     </div>
-                    <div className="text-center">
-                      <p className="text-3xl font-black text-orange-600 tabular-nums">10K+</p>
-                      <p className="text-xs font-medium text-gray-500 uppercase tracking-wide mt-1">Learners</p>
+                    <div className="text-center min-w-0 px-1">
+                      <p className="text-2xl min-[380px]:text-3xl font-black text-orange-600 tabular-nums">10K+</p>
+                      <p className="text-[0.65rem] min-[380px]:text-xs font-medium text-gray-500 uppercase tracking-wide mt-1">Learners</p>
                     </div>
                   </div>
                 </div>
-              </div>
             </Card>
           </div>
         </div>

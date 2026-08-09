@@ -57,12 +57,14 @@ const Features = () => {
           {features.map((feature, index) => (
             <Card
               key={index}
-              title={feature.title}
-              description={feature.description}
-              className="bg-white border-gray-200 hover:shadow-lg transition-shadow duration-300 h-full flex flex-col [&>div]:flex-1 [&>div]:flex [&>div]:flex-col [&_p]:flex-1"
+              className="bg-white border-gray-200 hover:shadow-lg transition-shadow duration-300 h-full flex flex-col"
             >
-              <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center mb-4">
-                {feature.icon}
+              <div className="flex-1 flex flex-col">
+                <div className="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center mb-4 shrink-0">
+                  {feature.icon}
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
+                <p className="text-sm text-gray-600 flex-1">{feature.description}</p>
               </div>
             </Card>
           ))}

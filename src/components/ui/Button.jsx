@@ -9,25 +9,26 @@ const Button = ({ variant = 'primary', size = 'medium', children, className, ...
     'px-6 py-3 text-lg';
 
   const baseClasses = [
-    'inline-flex items-center justify-center font-medium',
+    'inline-flex items-center justify-center font-medium leading-normal',
     'rounded-lg transition-all duration-200 ease-in-out',
     'focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
     'disabled:cursor-not-allowed disabled:opacity-50',
-    className
-  ].filter(Boolean).join(' ');
+  ].join(' ');
 
   const variantClass =
     variant === 'primary'
       ? 'bg-blue-600 text-white hover:bg-blue-700 active:transform-gpu active:-translate-y-0.5 shadow-md hover:shadow-lg focus-visible:ring-blue-500'
       : variant === 'secondary'
       ? 'bg-gray-100 text-gray-900 hover:bg-gray-200 active:-translate-y-0.5 shadow-sm hover:shadow focus-visible:ring-gray-500'
+      : variant === 'brand'
+      ? 'bg-orange-500 text-white hover:bg-orange-600 active:-translate-y-0.5 shadow-md hover:shadow-lg focus-visible:ring-orange-500 focus-visible:ring-offset-2'
       : variant === 'outline'
       ? 'border border-gray-300 text-gray-700 bg-white hover:bg-gray-50 active:-translate-y-0.5 shadow-sm hover:shadow focus-visible:ring-gray-500'
       : variant === 'ghost'
       ? 'text-gray-700 bg-transparent hover:bg-gray-100 active:-translate-y-0.5 focus-visible:ring-gray-500'
-      : 'bg-orange-500 text-white hover:bg-orange-600 active:-translate-y-0.5 shadow-md hover:shadow-lg focus-visible:ring-orange-500';
+      : 'bg-orange-500 text-white hover:bg-orange-600 active:-translate-y-0.5 shadow-md hover:shadow-lg focus-visible:ring-orange-500 focus-visible:ring-offset-2';
 
-  const classes = [baseClasses, variantClass].join(' ');
+  const classes = [baseClasses, sizeClass, variantClass, className].filter(Boolean).join(' ');
 
   return (
     <button className={classes} {...props}>

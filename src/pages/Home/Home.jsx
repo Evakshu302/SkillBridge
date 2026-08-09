@@ -1,6 +1,10 @@
 import React from 'react';
 import Hero from './Hero';
+import TrustedBy from './TrustedBy';
 import Features from './Features';
+import Categories from './Categories';
+import PopularSkills from './PopularSkills';
+import TopMentors from './TopMentors';
 import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
 
@@ -51,7 +55,11 @@ const Home = () => {
   return (
     <>
       <Hero />
+      <TrustedBy />
       <Features />
+      <Categories />
+      <PopularSkills />
+      <TopMentors />
 
       {/* Skills/Opportunities Preview */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
@@ -96,28 +104,39 @@ const Home = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="bg-linear-to-br from-white to-orange-50/70 border border-orange-100 rounded-2xl p-8 sm:p-12 lg:p-16 text-center shadow-sm">
-            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-4">
-              Ready to Start Your Journey?
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-              Join thousands of learners building skills, finding opportunities, and connecting with mentors.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                variant="brand"
-                className="h-12 px-8 font-semibold rounded-lg hover:opacity-90 hover:shadow-md transition-all min-w-[160px]"
-              >
-                Get Started Free
-              </Button>
-              <Button
-                variant="outline"
-                className="h-12 px-8 font-semibold rounded-lg hover:bg-gray-50 hover:shadow-md transition-all min-w-[160px]"
-              >
-                Explore Skills
-              </Button>
+          <div className="relative overflow-hidden bg-gray-900 rounded-3xl p-8 sm:p-16 text-center shadow-2xl border border-gray-800">
+            {/* Background decorative elements */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+              <div className="absolute -top-32 -right-32 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl"></div>
+              <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-orange-600/20 rounded-full blur-3xl"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-linear-to-b from-transparent to-gray-900/50"></div>
+            </div>
+            
+            <div className="relative z-10">
+              <h2 className="text-3xl font-extrabold text-white sm:text-4xl md:text-5xl mb-6 tracking-tight">
+                Ready to Join <span className="text-orange-500">SkillBridge</span>?
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Take the leap. Connect with industry experts, build real-world skills, and accelerate your career journey today.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button
+                  variant="brand"
+                  size="lg"
+                  className="w-full sm:w-auto font-semibold rounded-xl hover:scale-105 transition-transform duration-300"
+                >
+                  Get Started Free
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="w-full sm:w-auto font-semibold rounded-xl bg-gray-800/50 border-gray-700 text-gray-200 hover:bg-gray-700 hover:text-white backdrop-blur-sm transition-all duration-300"
+                >
+                  Explore Skills
+                </Button>
+              </div>
             </div>
           </div>
         </div>

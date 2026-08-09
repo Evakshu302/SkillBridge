@@ -23,9 +23,9 @@ const Card = ({ title, description, image, children, className, ...rest }) => {
           className="w-full h-48 object-cover rounded-t-lg"
         />
       )}
-      <div className="p-4 space-y-3">
-        <h3 className="text-text font-semibold">{title}</h3>
-        <p className="text-text-secondary">{description}</p>
+      <div className="p-4 space-y-3 flex-1 flex flex-col">
+        {title && <h3 className="text-text font-semibold">{title}</h3>}
+        {description && <p className="text-text-secondary">{description}</p>}
         {children}
       </div>
     </div>
