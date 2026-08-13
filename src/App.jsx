@@ -1,18 +1,28 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-const Navbar = React.lazy(() => import('./components/layout/Navbar'));
-const Footer = React.lazy(() => import('./components/layout/Footer'));
-const Home = React.lazy(() => import('./pages/Home/Home'));
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+
+import Home from './pages/Home/Home';
+import Login from './pages/Auth/Login';
+import Register from './pages/Auth/Register';
+import ForgotPassword from './pages/Auth/ForgotPassword';
 
 const App = () => {
   return (
-    <div className="bg-white p-4">
+    <Router>
       <Navbar />
-      <main className="py-8 max-w-6xl mx-auto mx-sm:mx-0">
-        <Home />
-      </main>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+      </Routes>
+
       <Footer />
-    </div>
+    </Router>
   );
 };
 
