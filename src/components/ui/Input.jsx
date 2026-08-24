@@ -12,11 +12,11 @@ const Input = ({
   ...rest
 }) => {
   const inputClasses = `
-    w-full rounded-md border border-border bg-surface text-text
+    w-full rounded-md border border-border bg-white text-text
     placeholder:text-text-secondary/70
-    focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary
+    focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500
     transition-colors duration-200
-    ${disabled ? 'bg-surface/50 text-text/50 cursor-not-allowed' : ''}
+    ${disabled ? 'bg-gray-50 text-text/50 cursor-not-allowed' : ''}
     px-3 py-2
     ${className}
   `.trim().replace(/\s+/g, ' ');

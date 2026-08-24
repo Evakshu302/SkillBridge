@@ -2,8 +2,7 @@ import React from 'react';
 
 const Card = ({ title, description, image, children, className, ...rest }) => {
   const baseClasses = `
-    bg-surface
-    border border-border
+    bg-white border border-gray-200
     rounded-lg
     shadow-md
     hover:-translate-y-1 hover:shadow-lg

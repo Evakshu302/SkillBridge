@@ -4,13 +4,14 @@ const Badge = ({ variant = 'primary', size = 'medium', children, className }) =>
   const sizeClass = size === 'small' ? 'px-2 py-1 text-xs' : 'px-4 py-2 text-base';
 
   const variantClasses = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700',
+    primary: 'bg-orange-500 text-white hover:bg-orange-600',
     success: 'bg-green-600 text-white hover:bg-green-700',
     warning: 'bg-yellow-600 text-white hover:bg-yellow-700',
     error: 'bg-red-600 text-white hover:bg-red-700',
     neutral: 'bg-gray-700 text-white hover:bg-gray-800',
     outline:
       'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400',
+    skill: 'bg-orange-50 text-orange-700 border border-orange-200',
   };
 
   const classes = [
