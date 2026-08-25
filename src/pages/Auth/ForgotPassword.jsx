@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Card from '../../components/ui/Card';
 import Input from '../../components/ui/Input';
 import Button from '../../components/ui/Button';
@@ -65,12 +66,12 @@ const ForgotPassword = () => {
 
           <div className="mt-6 text-center text-sm text-text-secondary">
             Remember your password?{' '}
-            <a
-              href="/login"
+            <Link
+              to="/login"
               className="font-medium text-accent hover:text-orange-600 transition-colors"
             >
               Sign in
-            </a>
+            </Link>
           </div>
         </Card>
 

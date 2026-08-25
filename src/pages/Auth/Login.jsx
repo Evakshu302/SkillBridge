@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Card from '../../components/ui/Card';
 import Input from '../../components/ui/Input';
 import Button from '../../components/ui/Button';
@@ -79,12 +80,12 @@ const Login = () => {
                 />
                 <span className="text-sm text-text-secondary">Remember me</span>
               </label>
-              <a
-                href="/forgot-password"
+              <Link
+                to="/forgot-password"
                 className="text-sm font-medium text-accent hover:text-orange-600 transition-colors"
               >
                 Forgot password?
-              </a>
+              </Link>
             </div>
 
             <Button
@@ -98,12 +99,12 @@ const Login = () => {
 
           <div className="mt-6 text-center text-sm text-text-secondary">
             Don't have an account?{' '}
-            <a
-              href="/register"
+            <Link
+              to="/register"
               className="font-medium text-accent hover:text-orange-600 transition-colors"
             >
               Create an account
-            </a>
+            </Link>
           </div>
         </Card>
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Card from '../../components/ui/Card';
 import Input from '../../components/ui/Input';
 import Button from '../../components/ui/Button';
@@ -99,19 +100,19 @@ const Register = () => {
               />
               <span className="text-sm text-text-secondary">
                 I agree to the{' '}
-                <a
-                  href="/terms"
+                <Link
+                  to="/terms"
                   className="font-medium text-accent hover:text-orange-600 transition-colors"
                 >
-                  Terms & Conditions
-                </a>{' '}
+                  Terms &amp; Conditions
+                </Link>{' '}
                 and{' '}
-                <a
-                  href="/privacy"
+                <Link
+                  to="/privacy"
                   className="font-medium text-accent hover:text-orange-600 transition-colors"
                 >
                   Privacy Policy
-                </a>
+                </Link>
               </span>
             </label>
 
@@ -126,12 +127,12 @@ const Register = () => {
 
           <div className="mt-6 text-center text-sm text-text-secondary">
             Already have an account?{' '}
-            <a
-              href="/login"
+            <Link
+              to="/login"
               className="font-medium text-accent hover:text-orange-600 transition-colors"
             >
               Sign in
-            </a>
+            </Link>
           </div>
         </Card>
 

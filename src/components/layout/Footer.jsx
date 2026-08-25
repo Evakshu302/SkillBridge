@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const quickLinks = [
@@ -85,12 +86,12 @@ const Footer = () => {
               <ul className="space-y-2" role="list">
                 {quickLinks.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
+                    <Link
+                      to={link.href}
                       className="text-sm text-gray-300 hover:text-orange-400 transition-colors duration-200"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -104,12 +105,12 @@ const Footer = () => {
               <ul className="space-y-2" role="list">
                 {resources.map((resource) => (
                   <li key={resource.label}>
-                    <a
-                      href={resource.href}
+                    <Link
+                      to={resource.href}
                       className="text-sm text-gray-300 hover:text-orange-400 transition-colors duration-200"
                     >
                       {resource.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -148,9 +149,9 @@ const Footer = () => {
               &copy; {new Date().getFullYear()} SkillBridge. All rights reserved.
             </p>
             <div className="flex items-center gap-6 text-sm text-gray-400">
-              <a href="/privacy" className="hover:text-orange-400 transition-colors">Privacy</a>
-              <a href="/terms" className="hover:text-orange-400 transition-colors">Terms</a>
-              <a href="/contact" className="hover:text-orange-400 transition-colors">Contact</a>
+              <Link to="/privacy" className="hover:text-orange-400 transition-colors">Privacy</Link>
+              <Link to="/terms" className="hover:text-orange-400 transition-colors">Terms</Link>
+              <Link to="/contact" className="hover:text-orange-400 transition-colors">Contact</Link>
             </div>
           </div>
         </div>

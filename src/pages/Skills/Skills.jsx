@@ -105,7 +105,7 @@ const Skills = () => {
       {/* Search + Categories */}
       <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col lg:flex-row gap-8">
+          <div className="flex flex-col lg:flex-row gap-8 min-w-0">
             {/* Sidebar */}
             <aside className="lg:w-72 shrink-0">
               <div className="mb-6">
@@ -140,20 +140,20 @@ const Skills = () => {
             </aside>
 
             {/* Skills Grid */}
-            <div className="flex-1">
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+            <div className="flex-1 min-w-0">
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 max-w-full">
                 {filtered.map((skill, index) => (
-                  <Card key={index} className="group hover:border-orange-200 hover:shadow-lg transition-all duration-300">
-                    <div className="flex flex-col h-full">
+                  <Card key={index} className="group hover:border-orange-200 hover:shadow-lg transition-all duration-300 min-w-0">
+                    <div className="flex flex-col h-full min-w-0">
                       <div className="flex items-start justify-between mb-4">
                         <div className={`w-12 h-12 ${skill.color} rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-sm`}>
                           {skill.title[0]}
                         </div>
-                        <Badge variant="skill" size="small">
+                        <Badge variant="skill" size="small" className="shrink-0">
                           {skill.level}
                         </Badge>
                       </div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-1">{skill.title}</h3>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-1 wrap-break-word" title={skill.title}>{skill.title}</h3>
                       <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
                         <span>⭐ {skill.rating}</span>
                         <span>👥 {skill.learners} learners</span>
@@ -165,8 +165,8 @@ const Skills = () => {
                           </Badge>
                         ))}
                       </div>
-                      <div className="mt-auto">
-                        <Button variant="outline" size="sm" className="w-full group-hover:bg-orange-50 group-hover:border-orange-300">
+                      <div className="mt-auto pt-4">
+                        <Button variant="outline" size="sm" className="w-full max-w-full group-hover:bg-orange-50 group-hover:border-orange-300">
                           Explore Path
                         </Button>
                       </div>

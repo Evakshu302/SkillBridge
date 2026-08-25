@@ -9,6 +9,7 @@ const Card = ({ title, description, image, children, className, ...rest }) => {
     transition-transform duration-200
     transition-shadow duration-200
     w-full
+    max-w-full
   `;
 
   const classes = [baseClasses, className].filter(Boolean).join(' ');

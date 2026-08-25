@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html, body, #root {
+  overflow-x: hidden;
+}
+
 @theme {
   /* Colors */
   --color-primary: #2563eb;
