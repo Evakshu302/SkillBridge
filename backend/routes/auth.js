@@ -22,14 +22,14 @@ router.post('/register', async (req, res) => {
       return res.status(400).json({ error: 'Email already registered.' });
     }
 
-    const user = await User.create({ fullName, email, password });
+    const user = await User.create({ fullName: fullName.trim(), email: email.toLowerCase(), password });
 
     return res.status(201).json({
       success: true,
       message: 'User registered successfully.',
       user: { id: user.id, fullName: user.fullName, email: user.email },
     });
-  } catch {
+  } catch (error) {
     return res.status(500).json({ error: 'Server error during registration.' });
   }
 });
@@ -64,8 +64,8 @@ router.post('/login', async (req, res) => {
       user: { id: user.id, fullName: user.fullName, email: user.email },
       token,
     });
-  } catch {
-    return res.status(500).json({ error: 'Server error during login.' });
+  } catch (error) {
+    return res.status(500).json({ error: 'Server error during login.', details: error.message });
   }
 });
 
