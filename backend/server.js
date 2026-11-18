@@ -8,6 +8,7 @@ import categoryRoutes from './routes/category.js';
 import skillRoutes from './routes/skill.js';
 import projectRoutes from './routes/project.js';
 import jobRoutes from './routes/job.js';
+import postRoutes from './routes/post.js';
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use('/api/categories', categoryRoutes);
 app.use('/api/skills', skillRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/jobs', jobRoutes);
+app.use('/api/posts', postRoutes);
 
 const startServer = async () => {
   await connectDB();
