@@ -1,18 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Badge from '../../components/ui/Badge';
 import Button from '../../components/ui/Button';
-
-// ─── Mock data ────────────────────────────────────────────────────────────────
-
-const user = {
-  name: 'Alex Morgan',
-  role: 'Full-Stack Developer',
-  streak: 7,
-  lastActive: '2h ago',
-  joinedDaysAgo: 34,
-};
+import { useAuth } from '../../context/useAuth';
 
 const stats = [
   { label: 'Skills Active', value: 3, sub: '2 in progress' },
@@ -240,6 +231,10 @@ const getNotifIcon = (type) => {
 // ─── Dashboard ────────────────────────────────────────────────────────────────
 
 const Dashboard = () => {
+  const { user: authUser } = useAuth();
+  const displayName = authUser?.fullName ?? 'there';
+  const displayRole = authUser?.title ?? 'SkillBridge Member';
+
   return (
     <main className="min-h-screen bg-gray-50">
 
@@ -255,19 +250,19 @@ const Dashboard = () => {
             <div>
               <p className="text-sm text-gray-500 font-medium mb-1">
                 {getGreeting()} ·{' '}
-                <span className="text-orange-500">🔥 {user.streak}-day streak</span>
+                <span className="text-orange-500">🔥 7-day streak</span>
               </p>
               <h1 className="text-2xl font-bold text-gray-900">
-                Welcome back, {user.name.split(' ')[0]}
+                Welcome back, {displayName.split(' ')[0]}
               </h1>
               <p className="text-sm text-gray-500 mt-1">
-                {user.role} · Active {user.lastActive} · {user.joinedDaysAgo} days on SkillBridge
+                {displayRole}
               </p>
             </div>
             <div className="flex items-center gap-3">
               <Link to="/profile">
                 <div className="w-11 h-11 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-sm">
-                  {user.name[0]}
+                  {displayName[0]}
                 </div>
               </Link>
             </div>
@@ -285,7 +280,7 @@ const Dashboard = () => {
           custom={1}
           className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 rounded-xl overflow-hidden border border-gray-200"
         >
-          {stats.map((stat, i) => (
+          {stats.map((stat) => (
             <div key={stat.label} className="bg-white px-5 py-5">
               <p className="text-2xl font-bold text-gray-900 tabular-nums">
                 <AnimatedNumber value={stat.value} />
@@ -468,7 +463,7 @@ const Dashboard = () => {
             >
               <h2 className="text-base font-semibold text-gray-900 mb-3">Quick Actions</h2>
               <div className="grid grid-cols-1 gap-2">
-                {quickActions.map((action, i) => (
+                {quickActions.map((action) => (
                   <motion.div key={action.label} whileHover={{ x: 2 }} transition={{ duration: 0.15 }}>
                     <Link
                       to={action.href}
@@ -499,7 +494,7 @@ const Dashboard = () => {
                 </span>
               </div>
               <div className="bg-white rounded-xl border border-gray-200 divide-y divide-gray-100">
-                {notifications.map((notif, i) => (
+                {notifications.map((notif) => (
                   <div
                     key={notif.id}
                     className={`px-4 py-3 transition-colors hover:bg-gray-50 ${notif.unread ? 'bg-orange-50/50' : ''}`}

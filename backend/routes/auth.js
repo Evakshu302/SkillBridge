@@ -29,7 +29,7 @@ router.post('/register', async (req, res) => {
       message: 'User registered successfully.',
       user: { id: user.id, fullName: user.fullName, email: user.email },
     });
-  } catch (error) {
+  } catch {
     return res.status(500).json({ error: 'Server error during registration.' });
   }
 });

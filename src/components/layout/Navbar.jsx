@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAuth } from '../../context/useAuth';
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -13,6 +14,8 @@ const navLinks = [
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -21,6 +24,12 @@ const Navbar = () => {
   }, []);
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
+  const handleLogout = () => {
+    logout();
+    closeMobileMenu();
+    navigate('/');
+  };
 
   return (
     <nav
@@ -33,7 +42,6 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
 
-          {/* Logo */}
           <div className="shrink-0">
             <Link to="/" className="flex items-center gap-2.5 group">
               <div className="w-9 h-9 bg-orange-500 rounded-lg flex items-center justify-center text-white shadow-sm group-hover:bg-orange-600 transition-colors duration-200">
@@ -42,13 +50,10 @@ const Navbar = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
                 </svg>
               </div>
-              <span className="text-xl font-bold text-gray-900 tracking-tight">
-                SkillBridge
-              </span>
+              <span className="text-xl font-bold text-gray-900 tracking-tight">SkillBridge</span>
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:block md:ml-8">
             <div className="flex items-center space-x-1">
               {navLinks.map((link) => (
@@ -81,29 +86,44 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Desktop Auth Buttons */}
           <div className="hidden md:flex md:items-center md:gap-3">
-            <NavLink
-              to="/login"
-              className={({ isActive }) =>
-                `px-4 py-2 text-sm font-medium rounded-md transition-colors duration-150 ${
-                  isActive
-                    ? 'text-orange-600 bg-orange-50'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                }`
-              }
-            >
-              Login
-            </NavLink>
-            <Link
-              to="/register"
-              className="px-4 py-2 text-sm font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600 transition-colors duration-150 shadow-sm"
-            >
-              Get started
-            </Link>
+            {user ? (
+              <>
+                <Link to="/profile" className="flex items-center gap-2 px-3 py-1.5 rounded-md hover:bg-gray-50 transition-colors">
+                  <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                    {user.fullName?.[0] ?? 'U'}
+                  </div>
+                  <span className="text-sm font-medium text-gray-700">{user.fullName?.split(' ')[0]}</span>
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-150"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <NavLink
+                  to="/login"
+                  className={({ isActive }) =>
+                    `px-4 py-2 text-sm font-medium rounded-md transition-colors duration-150 ${
+                      isActive ? 'text-orange-600 bg-orange-50' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                    }`
+                  }
+                >
+                  Login
+                </NavLink>
+                <Link
+                  to="/register"
+                  className="px-4 py-2 text-sm font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600 transition-colors duration-150 shadow-sm"
+                >
+                  Get started
+                </Link>
+              </>
+            )}
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               type="button"
@@ -125,7 +145,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -145,9 +164,7 @@ const Navbar = () => {
                   onClick={closeMobileMenu}
                   className={({ isActive }) =>
                     `block px-3 py-2 rounded-md text-base font-medium transition-colors ${
-                      isActive
-                        ? 'text-orange-600 bg-orange-50'
-                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                      isActive ? 'text-orange-600 bg-orange-50' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                     }`
                   }
                 >
@@ -157,20 +174,43 @@ const Navbar = () => {
             </div>
 
             <div className="border-t border-gray-200 px-4 py-3 space-y-2">
-              <Link
-                to="/login"
-                onClick={closeMobileMenu}
-                className="block w-full text-center px-4 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
-              >
-                Login
-              </Link>
-              <Link
-                to="/register"
-                onClick={closeMobileMenu}
-                className="block w-full text-center px-4 py-2 rounded-md text-base font-medium text-white bg-orange-500 hover:bg-orange-600 transition-colors"
-              >
-                Get started
-              </Link>
+              {user ? (
+                <>
+                  <Link
+                    to="/profile"
+                    onClick={closeMobileMenu}
+                    className="flex items-center gap-3 px-4 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+                  >
+                    <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                      {user.fullName?.[0] ?? 'U'}
+                    </div>
+                    {user.fullName}
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="block w-full text-center px-4 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/login"
+                    onClick={closeMobileMenu}
+                    className="block w-full text-center px-4 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/register"
+                    onClick={closeMobileMenu}
+                    className="block w-full text-center px-4 py-2 rounded-md text-base font-medium text-white bg-orange-500 hover:bg-orange-600 transition-colors"
+                  >
+                    Get started
+                  </Link>
+                </>
+              )}
             </div>
           </motion.div>
         )}

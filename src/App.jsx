@@ -1,6 +1,6 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import ProtectedRoute from './components/ProtectedRoute';
 
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
@@ -46,12 +46,12 @@ const AppRoutes = () => {
         <Route path="/skills" element={<PageTransition><Skills /></PageTransition>} />
         <Route path="/projects" element={<PageTransition><Projects /></PageTransition>} />
         <Route path="/jobs" element={<PageTransition><Jobs /></PageTransition>} />
-        <Route path="/profile" element={<PageTransition><Profile /></PageTransition>} />
+        <Route path="/profile" element={<PageTransition><ProtectedRoute><Profile /></ProtectedRoute></PageTransition>} />
         <Route path="/community" element={<PageTransition><Community /></PageTransition>} />
         <Route path="/portfolio" element={<PageTransition><Portfolio /></PageTransition>} />
         <Route path="/learning" element={<PageTransition><Learning /></PageTransition>} />
         <Route path="/freelance" element={<PageTransition><Freelance /></PageTransition>} />
-        <Route path="/dashboard" element={<PageTransition><Dashboard /></PageTransition>} />
+        <Route path="/dashboard" element={<PageTransition><ProtectedRoute><Dashboard /></ProtectedRoute></PageTransition>} />
         <Route path="/login" element={<PageTransition><Login /></PageTransition>} />
         <Route path="/register" element={<PageTransition><Register /></PageTransition>} />
         <Route path="/forgot-password" element={<PageTransition><ForgotPassword /></PageTransition>} />
